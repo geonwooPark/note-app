@@ -17,6 +17,8 @@ export default function Sidebar({
   notes,
   setNotes,
 }: SidebarProps) {
+  const sortedNotes = notes.sort((a, b) => b.modDate - a.modDate)
+
   const onAddNote = () => {
     const newNote: NoteType = {
       id: uuid(),
@@ -49,7 +51,7 @@ export default function Sidebar({
       </div>
       <div className="h-[calc(100vh-72px)] overflow-y-scroll">
         <div>
-          {notes.map((note) => {
+          {sortedNotes.map((note) => {
             return (
               <Note
                 key={note.id}
