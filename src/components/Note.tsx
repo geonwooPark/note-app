@@ -4,24 +4,25 @@ import { NoteType } from '../App'
 
 interface NoteProps {
   note: NoteType
-  currentNote: string | null
-  setCurrentNote: React.Dispatch<React.SetStateAction<string | null>>
+  currentNote: NoteType | null
+  setCurrentNote: React.Dispatch<React.SetStateAction<NoteType | null>>
 }
 
 export default function Note({ note, currentNote, setCurrentNote }: NoteProps) {
   return (
     <div
       key={note.id}
-      onClick={() => setCurrentNote(note.id)}
+      onClick={() => {
+        setCurrentNote(note)
+      }}
       className={`p-2 rounded-md
        cursor-pointer transition duration-200 hover:bg-gray-100 ${
-         currentNote === note.id && 'bg-yellow-300 hover:bg-yellow-300'
+         currentNote?.id === note.id && 'bg-yellow-300 hover:bg-yellow-300'
        }`}
     >
-      <div>
-        <strong>{note.title}</strong>
+      <div className="truncate">
+        <strong>{note.content ? note.content : '새로운 노트'}</strong>
       </div>
-      <p className="text-sm">{note.content}</p>
       <small>{timeForToday(note.modDate)}</small>
     </div>
   )
