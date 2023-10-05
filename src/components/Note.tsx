@@ -1,14 +1,21 @@
 import React from 'react'
 import { timeForToday } from '../utils/timeForToday'
 import { NoteType } from '../App'
+import { AiOutlineLock, AiOutlineUnlock } from 'react-icons/ai'
 
 interface NoteProps {
   note: NoteType
+  onLock: () => void
   currentNote: NoteType | null
   setCurrentNote: React.Dispatch<React.SetStateAction<NoteType | null>>
 }
 
-export default function Note({ note, currentNote, setCurrentNote }: NoteProps) {
+export default function Note({
+  note,
+  onLock,
+  currentNote,
+  setCurrentNote,
+}: NoteProps) {
   return (
     <div
       key={note.id}
@@ -20,10 +27,17 @@ export default function Note({ note, currentNote, setCurrentNote }: NoteProps) {
          currentNote?.id === note.id && 'bg-yellow-300 hover:bg-yellow-300'
        }`}
     >
-      <div className="truncate">
+      <div className="truncate mb-3">
         <strong>{note.content ? note.content : '새로운 노트'}</strong>
       </div>
-      <small>{timeForToday(note.modDate)}</small>
+      <div className="flex justify-between text-gray-500">
+        <small>{timeForToday(note.modDate)}</small>
+        {currentNote?.id === note.id && (
+          <span onClick={onLock}>
+            {!note.lock ? <AiOutlineUnlock /> : <AiOutlineLock />}
+          </span>
+        )}
+      </div>
     </div>
   )
 }

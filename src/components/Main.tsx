@@ -36,13 +36,12 @@ export default function Main({
     setNotes(updatedCurrentNote)
   }
 
-  const onChange = (e: any) => {
+  const onChange = (value: any) => {
     if (!currentNote) {
       return
     }
-    const { value } = e.target
     const updatedNote = {
-      id: currentNote.id,
+      ...currentNote,
       content: value,
       modDate: Date.now(),
     }
@@ -57,21 +56,21 @@ export default function Main({
     }
   }, [currentNote])
 
-  return (
-    <div className="w-[80%] h-[100vh]">
+  return currentNote ? (
+    <div className={`w-[80%] h-[100vh] ${currentNote.lock && 'cursor-lock'}`}>
       <Toolbar />
       <ReactQuill
         className="w-full h-full bg-gray-100"
         modules={modules}
+        value={currentContent}
+        readOnly={currentNote.lock}
+        theme="snow"
         onChange={onChange}
       />
     </div>
-    //   <textarea
-    //   name="textarea"
-    //   className="w-full h-full px-3 py-2 bg-gray-100 outline-none resize-none"
-    //   value={currentContent}
-    //   onChange={onChange}
-    // ></textarea>
-    // )
+  ) : (
+    <div className="w-[80%] flex justify-center items-center text-2xl text-gray-400">
+      노트를 선택해주세요.
+    </div>
   )
 }

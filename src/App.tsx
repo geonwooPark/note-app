@@ -6,6 +6,7 @@ export interface NoteType {
   id: string
   content: string
   modDate: number
+  lock: boolean
 }
 
 function App() {
@@ -15,7 +16,6 @@ function App() {
   const [currentNote, setCurrentNote] = useState<NoteType | null>(null)
 
   useEffect(() => {
-    console.log(1)
     localStorage.setItem('notes', JSON.stringify(notes))
   }, [notes])
 
