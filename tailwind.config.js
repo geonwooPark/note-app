@@ -18,6 +18,9 @@ export default {
         slideFadeOut: 'slideFadeOut 0.4s ease-in-out',
       },
     },
+    cursor: {
+      lock: 'url(lock.png), pointer',
+    },
   },
   plugins: [],
 }

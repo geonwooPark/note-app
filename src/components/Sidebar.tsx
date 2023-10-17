@@ -22,8 +22,9 @@ export default function Sidebar({
   const onAddNote = () => {
     const newNote: NoteType = {
       id: uuid(),
-      content: '',
+      content: '<p><br></p>',
       modDate: Date.now(),
+      lock: false,
     }
     setNotes([newNote, ...notes])
     setCurrentNote(newNote)
@@ -34,6 +35,17 @@ export default function Sidebar({
     const result = notes.filter((note) => note.id !== currentNote.id)
     setNotes(result)
     setCurrentNote(null)
+  }
+
+  const onLock = () => {
+    const copy = [...notes]
+    const result = copy.map((note) => {
+      if (note.lock === currentNote?.lock) {
+        note.lock = !note.lock
+      }
+      return note
+    })
+    setNotes(result)
   }
 
   return (
@@ -56,6 +68,7 @@ export default function Sidebar({
               <Note
                 key={note.id}
                 note={note}
+                onLock={onLock}
                 currentNote={currentNote}
                 setCurrentNote={setCurrentNote}
               />
