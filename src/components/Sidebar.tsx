@@ -22,7 +22,7 @@ export default function Sidebar({
   const onAddNote = () => {
     const newNote: NoteType = {
       id: uuid(),
-      content: '',
+      content: '<p><br></p>',
       modDate: Date.now(),
       lock: false,
     }
