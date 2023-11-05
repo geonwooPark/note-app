@@ -2,7 +2,7 @@
 **개발기간: 2023.10.02 ~ 2022.10.10 (약 7일)
 
 ## 배포 주소
-> ** 개발 버전 ** : [http://voluntain.cs.skku.edu/](http://voluntain.cs.skku.edu/) <br>
+> ** 개발 버전 ** : []() <br>
 
 ## 프로젝트 소개
 
@@ -32,7 +32,6 @@
 ```
 📦src
  ┣ 📂components
- ┃ ┣ 📜Dropdown.tsx
  ┃ ┣ 📜Main.tsx
  ┃ ┣ 📜Note.tsx
  ┃ ┣ 📜Sidebar.tsx
