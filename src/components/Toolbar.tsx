@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function Toolbar() {
   return (
     <div id="toolbar" className="h-[48px] flex items-center p-2">
