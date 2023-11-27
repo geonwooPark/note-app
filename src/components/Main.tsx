@@ -70,7 +70,9 @@ export default function Main({
     </div>
   ) : (
     <div className="w-[80%] flex justify-center items-center text-2xl text-gray-400">
-      노트를 선택해주세요.
+      {notes.length === 0
+        ? '새로운 노트를 만들어보세요!'
+        : '노트를 선택해주세요.'}
     </div>
   )
 }
