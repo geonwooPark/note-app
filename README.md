@@ -2,7 +2,7 @@
 **개발기간: 2023.10.02 ~ 2022.10.10 (약 7일)
 
 ## 배포 주소
-> [https://react-note-app-beta.vercel.app/](https://react-note-app-beta.vercel.app/) <br>
+> [https://ventileco-note-app.vercel.app/](https://ventileco-note-app.vercel.app/) <br>
 
 ## 프로젝트 소개
 
